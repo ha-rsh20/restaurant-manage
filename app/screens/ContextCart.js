@@ -1,20 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
+import { useState } from "react";
 import { SafeAreaView, StyleSheet, View, Text, Image } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import colors from "../consts/colors";
 import foods from "../consts/foods";
+import { CartContext } from "./CartS";
 import { PrimaryButton } from "../components/Button";
+import { ScrollView } from "react-native";
 
-const CartScreen = ({ navigation }) => {
-  function increament(item) {
-    return dispatch({
-      type: "INCREAMENT",
-      payload: item.id,
-    });
-  }
-  function decreament(item) {}
-  const CartCard = ({ item }) => {
+function ContextCart(props) {
+  const { item, increment, decrement } = useContext(CartContext);
+  const CartCard = ({ item, increment, decrement }) => {
     return (
       <View style={style.cartCard}>
         <Image
@@ -47,58 +44,47 @@ const CartScreen = ({ navigation }) => {
               size={25}
               color={colors.white}
               style={{ marginTop: 2, marginRight: 6 }}
-              onPress={() => decreament(item)}
+              onPress={() => decrement(item.id)}
             />
             <Icon
               name="add"
               size={25}
               color={colors.white}
               style={{ marginTop: 2, marginLeft: 6 }}
-              onPress={() => increament(item)}
+              onPress={() => increment(item.id)}
             />
           </View>
         </View>
       </View>
     );
   };
-  const Cart = () => {
+  /*const Cart = () => {
     return (
-      <SafeAreaView style={{ backgroundColor: colors.white, flex: 1 }}>
-        <View style={style.header}>
-          <Icon name="arrow-back-ios" size={28} onPress={navigation.goBack} />
-          <Text style={{ fontSize: 20, fontWeight: "bold" }}>Cart</Text>
-        </View>
-        <FlatList
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ paddingBottom: 80 }}
-          data={food}
-          renderItem={({ item }) => <CartCard item={item} />}
-          ListFooterComponentStyle={{ paddingHorizontal: 20, marginTop: 20 }}
-          ListFooterComponent={() => (
-            <View>
-              <View
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                  marginVertical: 15,
-                }}
-              >
-                <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                  Total Price
-                </Text>
-                <Text style={{ fontSize: 18, fontWeight: "bold" }}>₹ 50</Text>
-              </View>
-              <View style={{ marginHorizontal: 30 }}>
-                <PrimaryButton title="CHECKOUT" />
-              </View>
-            </View>
-          )}
-        />
-      </SafeAreaView>
+      
     );
-  };
-  return Cart();
-};
+  };*/
+  return (
+    <SafeAreaView style={{ backgroundColor: colors.white, flex: 1 }}>
+      <View style={style.header}>
+        <Icon name="arrow-back-ios" size={28} onPress={navigation.goBack} />
+        <Text style={{ fontSize: 20, fontWeight: "bold" }}>Cart</Text>
+      </View>
+      <ScrollView>
+        {item.map((curItem) => {
+          return (
+            <CartCard
+              item={curItem}
+              key={curItem.id}
+              increment={increment}
+              decrement={decrement}
+            />
+          );
+        })}
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
+
 const style = StyleSheet.create({
   header: {
     paddingVertical: 20,
@@ -129,4 +115,4 @@ const style = StyleSheet.create({
   },
 });
 
-export default CartScreen;
+export default ContextCart;

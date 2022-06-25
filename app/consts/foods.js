@@ -5,6 +5,7 @@ const foods = [
     ingredients: "Mixed Pizza",
     price: "150",
     image: require("../assets/meatPizza.png"),
+    quantity: 0,
   },
   {
     id: "2",
@@ -12,6 +13,7 @@ const foods = [
     ingredients: "Cheese Pizza",
     price: "120",
     image: require("../assets/cheesePizza.png"),
+    quantity: 0,
   },
   {
     id: "3",
@@ -19,6 +21,7 @@ const foods = [
     ingredients: "Fried Chicken",
     price: "80",
     image: require("../assets/chickenBurger.png"),
+    quantity: 0,
   },
   {
     id: "4",
@@ -26,6 +29,7 @@ const foods = [
     ingredients: "Salmon Meat",
     price: "80",
     image: require("../assets/sushiMakizushi.png"),
+    quantity: 0,
   },
   {
     id: "5",
@@ -33,6 +37,7 @@ const foods = [
     ingredients: "Salmon Meat",
     price: "90",
     image: require("../assets/idli.jpg"),
+    quantity: 0,
   },
   {
     id: "6",
@@ -40,6 +45,7 @@ const foods = [
     ingredients: "Salmon Meat",
     price: "120",
     image: require("../assets/dhossa.jpg"),
+    quantity: 0,
   },
   {
     id: "7",
@@ -47,6 +53,7 @@ const foods = [
     ingredients: "Salmon Meat",
     price: "80",
     image: require("../assets/uttapam.jpg"),
+    quantity: 0,
   },
   {
     id: "8",
@@ -54,6 +61,7 @@ const foods = [
     ingredients: "Salmon Meat",
     price: "90",
     image: require("../assets/pavbhaji.jpg"),
+    quantity: 0,
   },
   {
     id: "9",
@@ -61,6 +69,7 @@ const foods = [
     ingredients: "Salmon Meat",
     price: "90",
     image: require("../assets/manchurian.jpg"),
+    quantity: 0,
   },
   {
     id: "10",
@@ -68,6 +77,7 @@ const foods = [
     ingredients: "Salmon Meat",
     price: "50",
     image: require("../assets/sandwich.png"),
+    quantity: 0,
   },
   {
     id: "11",
@@ -75,6 +85,7 @@ const foods = [
     ingredients: "Salmon Meat",
     price: "50",
     image: require("../assets/puff.jpg"),
+    quantity: 0,
   },
   {
     id: "12",
@@ -82,6 +93,7 @@ const foods = [
     ingredients: "Salmon Meat",
     price: "50",
     image: require("../assets/vadapav.jpg"),
+    quantity: 0,
   },
 ];
 
