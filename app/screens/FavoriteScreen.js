@@ -114,44 +114,6 @@ const HomeScreen = ({ navigation }) => {
   };
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.white }}>
-      <View style={style.header}>
-        <View>
-          <View style={{ flexDirection: "row" }}>
-            <Text style={{ fontSize: 28 }}>Hello,</Text>
-            <Text style={{ fontSize: 28, fontWeight: "bold", marginLeft: 10 }}>
-              Ariz
-            </Text>
-          </View>
-          <Text style={{ marginTop: 5, fontSize: 22, color: colors.grey }}>
-            What do you want today
-          </Text>
-        </View>
-        <Image
-          source={require("../assets/person.png")}
-          style={{ height: 50, width: 50, borderRadius: 25 }}
-        />
-      </View>
-      <View
-        style={{
-          marginTop: 40,
-          flexDirection: "row",
-          paddingHorizontal: 20,
-        }}
-      >
-        <View style={style.inputContainer}>
-          <Icon name="search" size={28} />
-          <TextInput
-            style={{ flex: 1, fontSize: 18 }}
-            placeholder="Search for food"
-          />
-        </View>
-        <View style={style.sortBtn}>
-          <Icon name="tune" size={28} color={colors.white} />
-        </View>
-      </View>
-      <View>
-        <ListCategories />
-      </View>
       <FlatList
         showsVerticalScrollIndicator={false}
         numColumns={2}
