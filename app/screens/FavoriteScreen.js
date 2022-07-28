@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Dimensions,
   Image,
@@ -18,12 +18,12 @@ import Icon from "react-native-vector-icons/MaterialIcons";
 import colors from "../consts/colors";
 import categories from "../consts/categories";
 import foods from "../consts/foods";
+
 const { width } = Dimensions.get("screen");
 const cardWidth = width / 2 - 20;
 
-const HomeScreen = ({ navigation }) => {
+const FavoriteScreen = ({ navigation }) => {
   const [selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(0);
-
   const ListCategories = () => {
     return (
       <ScrollView
@@ -90,7 +90,7 @@ const HomeScreen = ({ navigation }) => {
               {food.name}
             </Text>
             <Text style={{ fontSize: 14, color: colors.grey, marginTop: 2 }}>
-              {food.ingredients}
+              {food.like}
             </Text>
           </View>
           <View
@@ -172,11 +172,12 @@ const style = StyleSheet.create({
     alignItems: "center",
   },
   card: {
-    height: 220,
+    alignSelf: "baseline",
     width: cardWidth,
     marginHorizontal: 10,
     marginBottom: 20,
     marginTop: 50,
+    paddingBottom: 10,
     borderRadius: 15,
     elevation: 13,
     backgroundColor: colors.white,
@@ -191,4 +192,4 @@ const style = StyleSheet.create({
   },
 });
 
-export default HomeScreen;
+export default FavoriteScreen;

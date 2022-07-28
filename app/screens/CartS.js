@@ -11,7 +11,7 @@ const initailState = {
   totalItem: 0,
 };
 
-function CartS() {
+function CartS({ navigation }) {
   const [state, dispatch] = useReducer(reducer, initailState);
 
   const increment = (id) => {
@@ -29,9 +29,10 @@ function CartS() {
     });
   };
 
+
   return (
     <CartContext.Provider value={{ ...state, increment, decrement }}>
-      <ContextCart />
+      <ContextCart navigation={navigation} />
     </CartContext.Provider>
   );
 }

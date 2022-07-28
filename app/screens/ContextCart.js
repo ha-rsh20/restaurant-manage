@@ -9,7 +9,7 @@ import { CartContext } from "./CartS";
 import { PrimaryButton } from "../components/Button";
 import { ScrollView } from "react-native";
 
-function ContextCart(props) {
+function ContextCart({ navigation }) {
   const { item, increment, decrement } = useContext(CartContext);
   const CartCard = ({ item, increment, decrement }) => {
     return (
@@ -27,9 +27,7 @@ function ContextCart(props) {
           }}
         >
           <Text style={{ fontWeight: "bold", fontSize: 16 }}>{item.name}</Text>
-          <Text style={{ fontSize: 13, color: colors.grey }}>
-            {item.ingredients}
-          </Text>
+          <Text style={{ fontSize: 13, color: colors.grey }}></Text>
           <Text style={{ fontSize: 17, fontWeight: "bold" }}>
             ₹ {item.price}
           </Text>
@@ -80,6 +78,23 @@ function ContextCart(props) {
             />
           );
         })}
+        <View style={{ paddingHorizontal: 20, marginTop: 20 }}>
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              marginVertical: 15,
+            }}
+          >
+            <Text style={{ fontSize: 18, fontWeight: "bold" }}>
+              Total Price
+            </Text>
+            <Text style={{ fontSize: 18, fontWeight: "bold" }}>₹ 0</Text>
+          </View>
+          <View style={{ marginHorizontal: 30 }}>
+            <PrimaryButton title="CHECKOUT" />
+          </View>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );

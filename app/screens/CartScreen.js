@@ -71,7 +71,7 @@ const CartScreen = ({ navigation }) => {
         <FlatList
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{ paddingBottom: 80 }}
-          data={food}
+          data={foods}
           renderItem={({ item }) => <CartCard item={item} />}
           ListFooterComponentStyle={{ paddingHorizontal: 20, marginTop: 20 }}
           ListFooterComponent={() => (

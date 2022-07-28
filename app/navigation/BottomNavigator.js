@@ -5,9 +5,9 @@ import Icon from "react-native-vector-icons/MaterialIcons";
 import colors from "../consts/colors";
 import { View } from "react-native";
 import HomeScreen from "../screens/HomeScreen";
-import CartScreen from "../screens/CartScreen";
 import CartS from "../screens/CartS";
 import FavoriteScreen from "../screens/FavoriteScreen";
+import SearchScreen from "../screens/SearchScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -44,7 +44,7 @@ const BottomNavigator = () => {
       />
       <Tab.Screen
         name="Search"
-        component={HomeScreen}
+        component={SearchScreen}
         options={{
           tabBarIcon: ({ color }) => (
             <View

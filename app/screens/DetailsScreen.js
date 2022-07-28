@@ -1,62 +1,32 @@
-import React from "react";
-import { SafeAreaView, StyleSheet, View, Text, Image } from "react-native";
-import { ScrollView } from "react-native-gesture-handler";
-import Icon from "react-native-vector-icons/MaterialIcons";
+import React, { createContext, useReducer } from "react";
+import { StyleSheet } from "react-native";
 import colors from "../consts/colors";
-import { SecondaryButton } from "../components/Button";
+import foods from "../consts/foods";
+import { reducer } from "./reducer";
+import DetailsS from "./DetailsS";
+export const detailsContext = createContext();
+
+const initailState = {
+  item: foods,
+  totalAmount: 0,
+  totalItem: 0,
+};
 
 const DetailsScreen = ({ navigation, route }) => {
-  const item = route.params;
+  const [state, dispatch] = useReducer(reducer, initailState);
+  const ditem = route.params;
+
+  const like = (id) => {
+    return dispatch({
+      type: "LIKE",
+      payload: id,
+    });
+  };
 
   return (
-    <SafeAreaView style={{ backgroundColor: colors.white }}>
-      <View style={style.header}>
-        <Icon name="arrow-back-ios" size={28} onPress={navigation.goBack} />
-        <Text style={{ fontSize: 20, fontWeight: "bold" }}>Details</Text>
-      </View>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <View
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-            height: 280,
-          }}
-        >
-          <Image
-            source={item.image}
-            style={{ borderRadius: 20, height: 220, width: 220 }}
-          />
-        </View>
-        <View style={style.details}>
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
-            <Text
-              style={{ fontSize: 25, fontWeight: "bold", color: colors.white }}
-            >
-              {item.name}
-            </Text>
-            <View style={style.iconContainer}>
-              <Icon name="favorite-border" color={colors.primary} size={25} />
-            </View>
-          </View>
-          <Text style={style.detailsText}>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries.
-          </Text>
-          <View style={{ marginTop: 40, marginBottom: 40 }}>
-            <SecondaryButton title="Add To Cart" />
-          </View>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <detailsContext.Provider value={{ ...state, like }}>
+      <DetailsS navigation={navigation} ditem={ditem} />
+    </detailsContext.Provider>
   );
 };
 
